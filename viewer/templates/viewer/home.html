@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block jumbotron %}
+<section class="jumbotron text-xs-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Zip Archive Album Viewer</h1>
+    <p class="lead text-muted">Simply in response to <a href="http://stackoverflow.com/q/41267502/4872140">this Django question on StackOverflow.</a></p>
+
+    <div class="container">
+        <form enctype="multipart/form-data" id="form" method="post" action="{% url 'viewer:home'  %}">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group row {% if field.errors %}has-error{% endif %}">
+                  <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label">{{ field.label }}</label>
+                  <div class="col-sm-8">
+                    {{ field }}
+                    <p class="help-block">{{ field.help_text|safe }}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <strong>{{ error }}</strong>
+                        {% endfor %}
+                    {% endif %}
+                    </p>
+                  </div>
+                </div>
+            {% endfor %}
+            <div class="btn-group" role="group" aria-label="Actions">
+              <button name="btn-save" type="submit" class="btn btn-primary">Upload</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block albums %}
+<div class="row">
+{% for album in albums %}
+<div class="card">
+    {% if album.cover %}
+        <img src="{{ album.cover.url }}" style="width:100px;" alt="Card image cap">
+    {% else %}
+        <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+    {% endif %}
+    <h4 class="card-title"><a href="{% url 'viewer:album' album_id=album.id  %}">{{ album.title }}</a></h4>
+    <p class="card-text small strong">{{ album.date|date:"Y-m-d" }}</p>
+    <p class="card-text">{{ album.body }}</p>
+
+</div>
+{% empty %}
+<div class="card">
+    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+    <p class="card-text">There are no albums. Upload your first album above.</p>
+</div>
+{%  endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Album example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/album.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar-collapse collapse inverse" id="navbar-header">
+      <div class="container-fluid">
+        <div class="about">
+          <h4>About</h4>
+            <p class="text-muted">This would probably never be done in production anywhere. Not sure of the value, but was trying to demonstate how to use Zipfile to traverse root level of a <strong>trusted</strong> zip archive.</p>
+        </div>
+        <div class="about">
+          <h4>Links</h4>
+          <ul class="list-unstyled">
+            <li><a href="http://stackoverflow.com/q/41267502/4872140">Stack Overflow Question</a></li>
+            <li><a href="https://docs.python.org/3/library/zipfile.html">ZipFile Documentation</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-static-top navbar-dark bg-inverse">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header" aria-expanded="false" aria-label="Toggle navigation"></button>
+        <a href="#" class="navbar-brand">Album</a>
+      </div>
+    </div>
+    {% block jumbotron %}{% endblock %}
+    <div class="album text-muted">
+      <div class="container">
+          {% block albums %}{% endblock %}
+      </div>
+    </div>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-xs-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="{% static 'js/holder.min.js' %}"></script>
+    <script>
+      $(function () {
+        Holder.addTheme("thumb", { background: "#55595c", foreground: "#eceeef", text: "Thumbnail" });
+      });
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
